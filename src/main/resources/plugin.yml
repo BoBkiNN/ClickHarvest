@@ -1,0 +1,7 @@
+name: ClickHarvest
+version: '${project.version}'
+main: xyz.bobkinn_.clickharvest.ClickHarvest
+api-version: 1.19
+load: STARTUP
+author: "BoBkiNN_"
+description: "Collect crops using right click"
