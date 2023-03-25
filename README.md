@@ -1,3 +1,4 @@
+[![See on Modrinth - ClickHarvest](https://img.shields.io/badge/See_on_Modrinth-ClickHarvest-2ea44f?logo=modrinth)](https://modrinth.com/mod/clickharvest) (Under review)
 # ClickHarvest
 Very small plugin for harvesting crops using right click
 
