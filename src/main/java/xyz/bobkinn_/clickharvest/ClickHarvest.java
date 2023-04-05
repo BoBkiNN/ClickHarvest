@@ -46,7 +46,8 @@ public final class ClickHarvest extends JavaPlugin implements Listener {
         cropDrops.put(Material.CARROTS, new CropDrops(new CropDrop(1, 4, Material.CARROT, 100)));
         cropDrops.put(Material.BEETROOTS, new CropDrops(new CropDrop(1, 1, Material.BEETROOT, 100),
                 new CropDrop(1, 3, Material.BEETROOT_SEEDS, 100)));
-        cropDrops.put(Material.POTATOES, new CropDrops(new CropDrop(2, 4, Material.POTATO, 100)));
+        cropDrops.put(Material.POTATOES, new CropDrops(new CropDrop(2, 4, Material.POTATO, 100),
+                new CropDrop(1, 1, Material.POISONOUS_POTATO, 2)));
         cropDrops.put(Material.COCOA,new CropDrops( new CropDrop(2, 2, Material.COCOA_BEANS, 100)));
         getServer().getPluginManager().registerEvents(this, this);
     }
