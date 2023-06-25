@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 public class CropDrops {
     private final List<CropDrop> drops;
     public CropDrops(CropDrop... drops){
-        this.drops = Arrays.stream(drops).collect(Collectors.toList());
+        this.drops = Arrays.asList(drops);
     }
 
     public List<CropDrop> getRandoms(){
-        return drops.stream().filter((cropDrop -> new Random().nextInt(0, 101) <= cropDrop.getChance()))
+        return drops.stream().filter((cropDrop -> new Random().nextInt(101) <= cropDrop.getChance()))
                 .collect(Collectors.toList());
     }
 }

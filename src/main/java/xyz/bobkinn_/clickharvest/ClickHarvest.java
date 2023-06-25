@@ -35,7 +35,7 @@ public final class ClickHarvest extends JavaPlugin implements Listener {
         block.setBlockData(a);
         player.swingMainHand();
         for (CropDrop dr : drops.getRandoms()) block.getWorld().dropItemNaturally(block.getLocation(), dr.getRandom());
-        player.playSound(player.getLocation(), Sound.ITEM_CROP_PLANT, 1.0f, 1.0f);
+        player.getWorld().playSound(block.getLocation(), Sound.ITEM_CROP_PLANT, 1.0f, 1.0f);
         e.setUseItemInHand(Event.Result.DENY);
     }
 
