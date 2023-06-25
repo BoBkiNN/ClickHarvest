@@ -14,7 +14,7 @@ public class CropDrop {
     private final int chance;
 
     public ItemStack getRandom(){
-        int n = new Random().nextInt(getMax()+1) + getMin();
+        int n = new Random().nextInt(getMax()+1-getMin()) + getMin();
         return new ItemStack(getMaterial(), n);
     }
 }

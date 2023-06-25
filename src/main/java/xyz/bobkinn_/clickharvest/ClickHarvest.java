@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,7 @@ public final class ClickHarvest extends JavaPlugin implements Listener {
     public final Map<Material, CropDrops> cropDrops = new HashMap<>();
 
     @EventHandler
-    public void onClick(PlayerInteractEvent e){
+    public void onClick(@NotNull PlayerInteractEvent e){
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Block block = e.getClickedBlock();
         if (block == null) return;
@@ -42,13 +43,14 @@ public final class ClickHarvest extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         cropDrops.put(Material.WHEAT, new CropDrops(new CropDrop(1, 1, Material.WHEAT, 100),
-                new CropDrop(1, 3, Material.WHEAT_SEEDS, 100)));
+                new CropDrop(0, 3, Material.WHEAT_SEEDS, 100)));
         cropDrops.put(Material.CARROTS, new CropDrops(new CropDrop(1, 4, Material.CARROT, 100)));
         cropDrops.put(Material.BEETROOTS, new CropDrops(new CropDrop(1, 1, Material.BEETROOT, 100),
-                new CropDrop(1, 3, Material.BEETROOT_SEEDS, 100)));
-        cropDrops.put(Material.POTATOES, new CropDrops(new CropDrop(2, 4, Material.POTATO, 100),
+                new CropDrop(0, 3, Material.BEETROOT_SEEDS, 100)));
+        cropDrops.put(Material.POTATOES, new CropDrops(new CropDrop(1, 4, Material.POTATO, 100),
                 new CropDrop(1, 1, Material.POISONOUS_POTATO, 2)));
         cropDrops.put(Material.COCOA,new CropDrops( new CropDrop(2, 2, Material.COCOA_BEANS, 100)));
+        cropDrops.put(Material.NETHER_WART, new CropDrops(new CropDrop(1, 3, Material.NETHER_WART, 100)));
         getServer().getPluginManager().registerEvents(this, this);
     }
 }

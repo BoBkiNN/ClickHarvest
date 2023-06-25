@@ -6,7 +6,7 @@
 
     <groupId>xyz.bobkinn_</groupId>
     <artifactId>ClickHarvest</artifactId>
-    <version>1.1-b16-A</version>
+    <version>1.2-b19-R</version>
     <packaging>jar</packaging>
 
     <name>ClickHarvest</name>
@@ -67,13 +67,19 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19.2-R0.1-SNAPSHOT</version>
+            <version>1.20.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.26</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>13.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
