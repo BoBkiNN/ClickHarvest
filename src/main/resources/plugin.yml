@@ -1,7 +1,16 @@
 name: ClickHarvest
 version: '${project.version}'
 main: xyz.bobkinn_.clickharvest.ClickHarvest
-api-version: 1.19
+api-version: 1.13
 load: STARTUP
 author: "BoBkiNN_"
 description: "Collect crops using right click"
+
+commands:
+  clickharvest:
+    description: "Enable/disable auto collect"
+    permission: "clickharvest.switch"
+
+permissions:
+  "clickharvest.switch":
+    default: "true"
