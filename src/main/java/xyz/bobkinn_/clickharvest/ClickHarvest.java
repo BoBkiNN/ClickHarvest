@@ -85,6 +85,10 @@ public final class ClickHarvest extends JavaPlugin implements Listener {
         } catch (Exception e){
             getLogger().log(Level.WARNING, "Failed to load disabled list", e);
         }
+        PluginCommand cmd2 = getCommand("clickharvestreload");
+        if (cmd2 != null){
+            cmd2.setExecutor(new ReloadCommand(this));
+        }
         seeds.put(Material.WHEAT, Material.WHEAT_SEEDS);
         seeds.put(Material.CARROTS, Material.CARROT);
         seeds.put(Material.BEETROOTS, Material.BEETROOT_SEEDS);

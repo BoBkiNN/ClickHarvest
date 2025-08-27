@@ -13,6 +13,12 @@ commands:
     description: "Enable/disable auto collect"
     permission: "clickharvest.switch"
 
+  clickharvestreload:
+    description: "Reload plugin configuration"
+    permission: "clickharvest.reload"
+
 permissions:
   "clickharvest.switch":
     default: "true"
+  "clickharvest.reload":
+    default: op
