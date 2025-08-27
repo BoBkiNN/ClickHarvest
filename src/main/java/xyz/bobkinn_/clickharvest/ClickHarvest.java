@@ -38,6 +38,7 @@ public final class ClickHarvest extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onClick(@NotNull PlayerInteractEvent e){
+        if (e.useInteractedBlock() == Event.Result.DENY) return;
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Block block = e.getClickedBlock();
         if (block == null) return;
