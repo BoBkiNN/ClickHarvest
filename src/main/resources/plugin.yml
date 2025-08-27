@@ -5,6 +5,8 @@ api-version: 1.13
 load: STARTUP
 author: "BoBkiNN_"
 description: "Collect crops using right click"
+softdepend:
+  - WorldGuard
 
 commands:
   clickharvest:

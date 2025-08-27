@@ -2,6 +2,7 @@ package xyz.bobkinn_.clickharvest;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.command.PluginCommand;
@@ -23,18 +24,40 @@ import java.util.logging.Level;
 
 public final class ClickHarvest extends JavaPlugin implements Listener {
     public final Map<Material, Material> seeds = new HashMap<>();
+    public Config config = Config.deserialize(null);
+
+    public boolean isValidWorld(World world) {
+        String name = world.getName();
+        List<String> worlds = config.getWorlds().getList();
+        switch (config.getWorlds().getMode()) {
+            case BLACKLIST: return !worlds.contains(name);
+            case WHITELIST: return worlds.contains(name);
+            default: return true;
+        }
+    }
 
     @EventHandler
     public void onClick(@NotNull PlayerInteractEvent e){
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Block block = e.getClickedBlock();
         if (block == null) return;
+        if (!isValidWorld(block.getWorld())) return;
         if (!seeds.containsKey(block.getType())) return;
         Player player = e.getPlayer();
         if (SwitchCommand.disabled.contains(player.getName())) return;
         if (player.isSneaking()) return;
         Ageable a = (Ageable) block.getBlockData();
         if (a.getAge() != a.getMaximumAge()) return;
+        if (getServer().getPluginManager().isPluginEnabled("WorldGuard") && config.getWorldguard().isEnabled()) {
+            try {
+                boolean allowed = WorldGuardSupport.canInteract(player, block, config.getWorldguard().getFlag());
+                if (!allowed) return;
+            } catch (NoClassDefFoundError ex) {
+                getLogger().warning("Tried to access WorldGuard plugin but got NoClassDefFoundError: " + ex);
+            } catch (IllegalArgumentException ex) {
+                getLogger().warning("You probably configured non-existing flag for worldguard in config: " + ex);
+            }
+        }
         List<ItemStack> drops = new ArrayList<>(block.getDrops(player.getInventory().getItemInMainHand(), player));
         a.setAge(0);
         block.setBlockData(a);
@@ -68,7 +91,21 @@ public final class ClickHarvest extends JavaPlugin implements Listener {
         seeds.put(Material.POTATOES, Material.POTATO);
         seeds.put(Material.COCOA, Material.COCOA_BEANS);
         seeds.put(Material.NETHER_WART, Material.NETHER_WART);
+
+        saveDefaultConfig();
+        reloadConfig();
+
         getServer().getPluginManager().registerEvents(this, this);
+    }
+
+    @Override
+    public void reloadConfig() {
+        super.reloadConfig();
+        try {
+            config = Config.deserialize(getConfig());
+        } catch (Exception e) {
+            getLogger().log(Level.SEVERE, "Failed to load config", e);
+        }
     }
 
     @Override

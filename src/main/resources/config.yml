@@ -1,0 +1,9 @@
+# WorldGuard compatibility
+worldguard:
+  enabled: true
+  flag: interact # flag to test
+
+# filter by world
+worlds:
+  mode: blacklist # or whitelist
+  list: [] # list of world names
