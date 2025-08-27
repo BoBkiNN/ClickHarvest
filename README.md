@@ -9,3 +9,20 @@ Very small plugin for harvesting crops using right click
 Other features:
 * whitelist/blacklist worlds from harvesting this way
 * WorldGuard support
+
+Commands:
+* `/clickharvestreload` - reloads configuration. Permission: `clickharvest.reload`
+* `/clickharvest` - enables/disables plugin for player that executed command
+
+### Default config:
+```yaml
+# WorldGuard compatibility
+worldguard:
+  enabled: true
+  flag: interact # flag to test
+
+# filter by world
+worlds:
+  mode: blacklist # or whitelist
+  list: [] # list of world names
+```
