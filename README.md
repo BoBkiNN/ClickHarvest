@@ -5,3 +5,7 @@ Very small plugin for harvesting crops using right click
 * This plugin can help players easily harvest crops that can be useful for survival servers.
 * When clicked, crop automatically replants and then its drop drops.
 * While sneaking, auto harvest is disabled
+
+Other features:
+* whitelist/blacklist worlds from harvesting this way
+* WorldGuard support
