@@ -6,7 +6,7 @@
 
     <groupId>xyz.bobkinn_</groupId>
     <artifactId>ClickHarvest</artifactId>
-    <version>1.3.21</version>
+    <version>1.3.22</version>
     <packaging>jar</packaging>
 
     <name>ClickHarvest</name>
